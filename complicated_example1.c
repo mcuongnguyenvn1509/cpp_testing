@@ -16,3 +16,9 @@
     printf ("Ackerman of (%d, %d) is %d\n", i, j, ack(i, j));
     return 0;
     }
+
+char *strcpy(char *t, const char *s) {
+  char *p = t;
+  while(*t++=*s++);
+  return p;
+}
