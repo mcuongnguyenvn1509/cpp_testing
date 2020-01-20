@@ -1,0 +1,15 @@
+# compiler to use
+CC = clang
+
+# flags to pass compiler
+CFLAGS = -ggdb -O0 -Qunused-arguments -std=c99 -Wall -Werror
+CFLAGS+ = -g
+
+output: boost_shared_ptr.o
+		g++ -std=c++11 -g boost_shared_ptr.o -o output.out
+
+boost_shared_ptr.o: boost_shared_ptr.cpp
+		g++ -std=c++11 -g -c boost_shared_ptr.cpp
+
+clean:
+		rm *.o output.out
