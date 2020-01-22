@@ -5,33 +5,43 @@ class CopyConstructor
 {
     char *s_copy;
     public:
-    CopyConstructor (const char *str)
+    //constructor
+CopyConstructor (const char *);
+CopyConstructor (const CopyConstructor &);
+void concatenate(const char *);
+    //destructor
+~CopyConstructor();
+void display();
+
+};
+    CopyConstructor::CopyConstructor (const char *str)
     {
         s_copy = new char[16];  //Dynamic memory alocation
         strcpy(s_copy, str);
     }
 
-    CopyConstructor (const CopyConstructor &str)
+    CopyConstructor::CopyConstructor (const CopyConstructor &str)
     {
         s_copy = new char[16]; //Dynamic memory alocation
         strcpy(s_copy, str.s_copy);
     }
 
-    void concatenate(const char *str)
+    void CopyConstructor::concatenate(const char *str)
     {
         strcat(s_copy, str); //Concatenating two strings
     }
 
-    ~CopyConstructor()
+    CopyConstructor::~CopyConstructor()
     {
         delete [] s_copy;
     }
 
-    void display()
+    void CopyConstructor::display()
     {
         cout<<s_copy<<endl;
     }
-};
+
+
 /* main function */
 int main()
 {
