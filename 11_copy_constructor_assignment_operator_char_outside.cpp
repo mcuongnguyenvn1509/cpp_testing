@@ -3,7 +3,7 @@
 using namespace std;
 class CopyConstructor
 {
-    char *s_copy; //https://stackoverflow.com/questions/1175646/c-when-should-i-use-a-pointer-member-in-a-class
+    char *s_copy; // need const //https://stackoverflow.com/questions/1175646/c-when-should-i-use-a-pointer-member-in-a-class
     // points to heap storage
     public:
     //constructor

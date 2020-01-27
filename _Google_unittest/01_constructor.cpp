@@ -5,15 +5,16 @@ Constructor::Constructor(){
 
 }
 
-Constructor::Constructor(char* str){
+Constructor::Constructor(const char* str){
+	_s_copy=NULL;
         _s_copy = new char[16];
-        strcpy(_s_copy, str._s_copy);
+        strcpy(_s_copy, str);
 }
 
 Constructor::Constructor(const Constructor& str){
         this->_s_copy= NULL;
         if(str._s_copy != NULL){
-                _s_copy= new char [16] //Dynamic memory alocation
+                _s_copy= new char [16]; //Dynamic memory alocation
                 strcpy(_s_copy, str._s_copy);
         }
 

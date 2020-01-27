@@ -41,11 +41,14 @@ include_directories(cmake-build-debug/googletest-src/googletest/include)
 set(SOURCE_FILES
 #51_unit_test_gmock_default_arguments_constructor.cpp
 #51_unit_test_gmock_default_arguments_constructor_utest.cpp
-sample1_unittest.cc
-sample1.cc
+#sample1_unittest.cc
+#sample1.cc
+01_constructor.cpp
+01_constructor.h
+01_constructor_unittest.cpp
 )
 set(HEADERS
-sample1.h
+#sample1.h
 )
 add_executable(TestCmake ${SOURCE_FILES} ${HEADERS})
 target_link_libraries(TestCmake gtest gtest_main)
