@@ -3,7 +3,7 @@
 using namespace std;
 class CopyConstructor
 {
-    char *s_copy; // need const //https://stackoverflow.com/questions/1175646/c-when-should-i-use-a-pointer-member-in-a-class
+    char *_s_copy; // need const //https://stackoverflow.com/questions/1175646/c-when-should-i-use-a-pointer-member-in-a-class
     // points to heap storage
     public:
     //constructor
@@ -17,30 +17,30 @@ void concatenate(const char *);
 void display();
 
 };
-    CopyConstructor::CopyConstructor() //or :s_copy(NULL)
+    CopyConstructor::CopyConstructor() //or :_s_copy(NULL)
     {
-	s_copy=NULL;
+	_s_copy=NULL;
     }
     CopyConstructor::CopyConstructor (const char *str) //constructor
     {
-/*	if(s_copy != NULL){
+/*	if(_s_copy != NULL){
 	 ERROR;
 	}
 //should have throw exception https://bytes.com/topic/c/answers/528061-constructor-pointer-parameter
 */
 
-//	if(s_copy == NULL){ //Do we need to have this
-        s_copy = new char[16];  //Dynamic memory alocation
+//	if(_s_copy == NULL){ //Do we need to have this
+        _s_copy = new char[16];  //Dynamic memory alocation
 //	}
-        strcpy(s_copy, str);
+        strcpy(_s_copy, str);
     }
 
     CopyConstructor::CopyConstructor (const CopyConstructor &str) //copy constructor
     {
-	this->s_copy = NULL;
-	if(str.s_copy != NULL){
-        s_copy = new char[16]; //Dynamic memory alocation
-        strcpy(s_copy, str.s_copy);
+	this->_s_copy = NULL;
+	if(str._s_copy != NULL){
+        _s_copy = new char[16]; //Dynamic memory alocation
+        strcpy(_s_copy, str._s_copy);
         }
     }
     CopyConstructor& CopyConstructor::operator=(const CopyConstructor &str){ //assignment operator
@@ -48,31 +48,31 @@ void display();
 		return *this;
 	}
 	else{
-	char* tmps_copy = new char[16];
+	char* tmp_s_copy = new char[16];
 /*This is one of the way to handle exception from new expression*/
 /*https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP54-CPP.+Gracefully+handle+self-copy+assignment*/
 /*https://www.codeguru.com/cpp/cpp/algorithms/general/article.php/c9585/Copy-Constructors-and-Assignment-Operators.htm*/
 /*
       try {
-        s_copy = new char[16];
+        _s_copy = new char[16];
       } catch (std::bad_alloc &) {
-        s_copy = nullptr; // For basic exception guarantees
+        _s_copy = nullptr; // For basic exception guarantees
         throw;
       }
 
 */
-	delete [] s_copy; //must have, The assignment operator deletes the contents of the existing string before assigning the new string , https://www.codeguru.com/cpp/cpp/algorithms/general/article.php/c9585/Copy-Constructors-and-Assignment-Operators.htm
-	s_copy = tmps_copy;
-	strcpy(s_copy, str.s_copy);
+	delete [] _s_copy; //must have, The assignment operator deletes the contents of the existing string before assigning the new string , https://www.codeguru.com/cpp/cpp/algorithms/general/article.php/c9585/Copy-Constructors-and-Assignment-Operators.htm
+	_s_copy = tmp_s_copy;
+	strcpy(_s_copy, str._s_copy);
 	}
 	return *this;
 
     }
 //or another way of copy constructor
-/*   CopyConstructor::CopyConstructor (const CopyConstructor &str):s_copy(NULL){
-	if(str.s_copy != NULL){
-		s_copy = new char[16];  //Dynamic memory alocation
-		memcpy(s_copy, str.s_copy, strlen(str.s_copy)+1);
+/*   CopyConstructor::CopyConstructor (const CopyConstructor &str):_s_copy(NULL){
+	if(str._s_copy != NULL){
+		_s_copy = new char[16];  //Dynamic memory alocation
+		memcpy(_s_copy, str._s_copy, strlen(str._s_copy)+1);
 		
 	}
 
@@ -81,9 +81,9 @@ void display();
 #if 0
     CopyConstructor& operator=( const CopyConstructor &str){
 	if (this != &str){
-	delete [] s_copy;
-	s_copy = new char[16];
-	strcpy(s_copy, str.s_copy);
+	delete [] _s_copy;
+	_s_copy = new char[16];
+	strcpy(_s_copy, str._s_copy);
 	}
 	return *this
     }
@@ -92,17 +92,17 @@ void display();
     /*https://www.codeguru.com/cpp/cpp/algorithms/general/article.php/c9585/Copy-Constructors-and-Assignment-Operators.htm*/
     void CopyConstructor::concatenate(const char *str)
     {
-        strcat(s_copy, str); //Concatenating two strings
+        strcat(_s_copy, str); //Concatenating two strings
     }
 
     CopyConstructor::~CopyConstructor()
     {
-        delete [] s_copy; // or if(s_copy != NULL) delete [] s_copy;
+        delete [] _s_copy; // or if(_s_copy != NULL) delete [] _s_copy;
     }
 
     void CopyConstructor::display()
     {
-        cout<<s_copy<<endl;
+        cout<<_s_copy<<endl;
     }
 
 
