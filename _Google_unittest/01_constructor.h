@@ -19,7 +19,8 @@ public:
         Constructor(const char* str); //constructor 3
 	//the parameter passed cannot be changed within the function https://stackoverflow.com/a/15999237
 	Constructor(char* str, int sLength); //constructor 4
-        Constructor(const Constructor& str); //copy constructor
+        Constructor(const char* str, int sLength); //constructor 4
+	//it should have const because if we create new object, Constructor("abc", 10), we will see the warning: ISO C++ forbids converting a string constant to ‘char*’
         Constructor& operator=(const Constructor& str); //assignment operator
         ~Constructor();
  	char* getString() const; //The implicit "this" pointer is const-qualified! // *this is const(can not be changed) // https://stackoverflow.com/a/15999170
