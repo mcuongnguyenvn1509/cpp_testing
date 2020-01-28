@@ -5,7 +5,10 @@ class Store
 {
 string item_name;
 public: //notice
-void getName(string item){
+void getName(string item){ //it should be &string if you want to change the string or reduce the perfomance of copying arguments into function parameters
+//https://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference/
+//with reference: reduce effort of the copy, change the arguments itself, not via return value
+//with passing arguments by value: just return the value back to the caller via return value
         item_name= item;
 }
 
