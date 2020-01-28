@@ -25,7 +25,7 @@ Constructor::Constructor(const char* str){
 	}
 }
 
-Constructor::Constructor(char* str, int sLength){
+Constructor::Constructor(const char* str, int sLength){
 	_s_copy=NULL;
 	_sId = 0;
 	_sLength = sLength;
